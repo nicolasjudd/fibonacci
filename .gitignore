@@ -1,2 +1,3 @@
 fibonacci-venv*/
 __pycache__/
+.coverage

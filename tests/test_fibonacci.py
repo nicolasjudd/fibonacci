@@ -1,38 +1,39 @@
 import unittest
-import inspect
-from fibonacci import fibonacci
+from fibonacci import fibonacci_pos
+
 
 class test_FibonacciFunctionStarts(unittest.TestCase):
-    def test_fibonacciFunctionExists(self):
-        self.assertTrue(callable(fibonacci))
-    
-    def test_fibonacciDoesntRunWithNoArguments(self):
-        with self.assertRaises(TypeError):
-            fibonacci()
+    def test_fibonacci_posFunctionExists(self):
+        self.assertTrue(callable(fibonacci_pos))
 
-    def test_fibonacciDoesntRunWithTooManyRightTypeArguments(self):
-        for i in range(3,12):
+    def test_fibonacci_posDoesntRunWithNoArguments(self):
+        with self.assertRaises(TypeError):
+            fibonacci_pos()
+
+    def test_fibonacci_posDoesntRunWithTooManyRightTypeArguments(self):
+        for i in range(2, 12):
             with self.subTest(i=i) and self.assertRaises(TypeError):
-                fibonacci(*[x for x in range(i)])
-    
-    def test_fibonacciDoesntRunWithOneFloatArguments(self):
-        with self.assertRaises(TypeError):
-            fibonacci(1123,58.13)
-        
-        with self.assertRaises(TypeError):
-            fibonacci(11.23,5813)
+                fibonacci_pos(*[x for x in range(i)])
 
-    def test_fibonacciDoesntRunWithTwoFloatArguments(self):
-        with self.assertRaises(TypeError):
-            fibonacci(11.23,58.13)
+    def test_fibonacci_posDoesntRunWithNegativeArgument(self):
+        with self.assertRaises(AssertionError):
+            fibonacci_pos(-1)
 
-    def test_fibonacciDoesntRunWithTupleArgument(self):
-        with self.assertRaises(TypeError):
-            fibonacci((1123,5813))
+    def test_fibonacci_posDoesntRunWithOneFloat(self):
+        with self.assertRaises(AssertionError):
+            fibonacci_pos(58.13)
 
-    def test_fibonacciDoesntRunWithListArgument(self):
-        with self.assertRaises(TypeError):
-            fibonacci([1123,5813])
+    def test_fibonacci_posDoesntRunWithTupleArgument(self):
+        with self.assertRaises(AssertionError):
+            fibonacci_pos((1123, 5813))
+
+    def test_fibonacci_posDoesntRunWithListArgument(self):
+        with self.assertRaises(AssertionError):
+            fibonacci_pos([1123, 5813])
+
 
 class test_FibonacciFunctionRuns(unittest.TestCase):
-    pass
+    def test_fibonacciReturnsCorrectValuesinSequence(self):
+        for i, val in enumerate([0,1,1,2,3,5,8,13,21,34,55,89,144,233,377]):
+            with self.subTest(pos=i):
+                self.assertEqual(fibonacci_pos(i),val)
