@@ -2,7 +2,7 @@ import unittest
 from fibonacci import fibonacci_pos
 
 
-class test_FibonacciFunctionStarts(unittest.TestCase):
+class test_FibonacciPosFunctionStarts(unittest.TestCase):
     def test_fibonacci_posFunctionExists(self):
         self.assertTrue(callable(fibonacci_pos))
 
@@ -32,8 +32,13 @@ class test_FibonacciFunctionStarts(unittest.TestCase):
             fibonacci_pos([1123, 5813])
 
 
-class test_FibonacciFunctionRuns(unittest.TestCase):
+class test_FibonacciPosFunctionRuns(unittest.TestCase):
     def test_fibonacciReturnsCorrectValuesinSequence(self):
         for i, val in enumerate([0,1,1,2,3,5,8,13,21,34,55,89,144,233,377]):
             with self.subTest(pos=i):
                 self.assertEqual(fibonacci_pos(i),val)
+
+    def test_fibonacciPosReturnsCorrectValuesOutOfSequence(self):
+        for pos, val in [(10,55),(2,1),(12,144),(14,377),(0,0)]:
+            with self.subTest(pos=pos, val=val):
+                self.assertEqual(fibonacci_pos(pos),val)
