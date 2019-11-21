@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
         name="fibonacci",
-        version="0.0.1",
+        version="0.1.0",
         author="Nicolas Judd",
         author_email="nicolas.judd@gmail.com",
         description="A Fibonacci sequence producer",
