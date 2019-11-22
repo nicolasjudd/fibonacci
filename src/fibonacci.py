@@ -1,7 +1,7 @@
 def fibonacci_pos(pos):
     """
-    Calculate the Fibonacci number located as position pos, considering 0 is at
-    position 0 of the Fibonacci sequence
+    Calculate the Fibonacci number located as position pos,
+    considering 0 is at position 0 of the Fibonacci sequence
 
     Parameters
     ----------
@@ -14,7 +14,14 @@ def fibonacci_pos(pos):
         Fibonacci number at position pos
     """
     assert type(pos) == int and pos >= 0, "Position must be a positive integer"
-    return pos if pos < 2 else fibonacci_pos(pos-1) + fibonacci_pos(pos-2)
+
+    a, b = (0, 1)
+    if pos < 2:
+        b = pos
+    else:
+        for _ in range(pos-1):
+            a, b = (b, a+b)
+    return b
 
 
 def fibonacci_sequence(size, pos=0, stride=1):

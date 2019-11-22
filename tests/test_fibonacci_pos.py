@@ -1,6 +1,8 @@
 import unittest
+import random
 from fibonacci import fibonacci_pos
 
+LOAD_RUNS = 2_000
 
 class test_FibonacciPosFunctionStarts(unittest.TestCase):
     def test_fibonacci_posFunctionExists(self):
@@ -11,9 +13,9 @@ class test_FibonacciPosFunctionStarts(unittest.TestCase):
             fibonacci_pos()
 
     def test_fibonacci_posDoesntRunWithTooManyRightTypeArguments(self):
-        for i in range(2, 12):
-            with self.subTest(i=i) and self.assertRaises(TypeError):
-                fibonacci_pos(*[x for x in range(i)])
+        for pos in range(2, 12):
+            with self.subTest(pos=pos) and self.assertRaises(TypeError):
+                fibonacci_pos(*[x for x in range(pos)])
 
     def test_fibonacci_posDoesntRunWithNegativeArgument(self):
         with self.assertRaises(AssertionError):
@@ -42,3 +44,33 @@ class test_FibonacciPosFunctionRuns(unittest.TestCase):
         for pos, val in [(10,55),(2,1),(12,144),(14,377),(0,0)]:
             with self.subTest(pos=pos, val=val):
                 self.assertEqual(fibonacci_pos(pos),val)
+
+    def test_fibonacciPosReturnsUnderLoad(self):
+        for pos in range(LOAD_RUNS):
+            with self.subTest(pos=pos):
+                try:
+                    fibonacci_pos(pos)
+                except:
+                    self.assertTrue(False)
+                    return
+        self.assertTrue(True)
+
+    def test_fibonacciPosReturnsUnderLoadBackward(self):
+        for pos in range(LOAD_RUNS,0,-1):
+            with self.subTest(pos=pos):
+                try:
+                    fibonacci_pos(pos)
+                except:
+                    self.assertTrue(False)
+                    return
+        self.assertTrue(True)
+
+    def test_fibonacciPosReturnsUnderRandomOrderLoad(self):
+        for _ in range(LOAD_RUNS):
+            try:
+                pos = random.randint(0,LOAD_RUNS) 
+                fibonacci_pos(pos)
+            except:
+                self.assertTrue(False)
+                return
+        self.assertTrue(True)
