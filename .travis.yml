@@ -2,5 +2,8 @@
 language: python
 python:
         - "3.8"
-        - "2.7"
-script: pytest
+<<<<<<< HEAD
+install: pip install .
+=======
+>>>>>>> 65cd9c6eeadd5ea55aab75fba858d2abb9cb8285
+script: pytest tests/
