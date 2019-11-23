@@ -55,7 +55,7 @@ def fibonacci_sequence(size, pos=0, stride=1):
 
     if stride > 0:
         return (fibonacci_pos(x) for x in range(pos, size, stride))
-    else if stride < 0:
+    elif stride < 0:
         return (fibonacci_pos(x) for x in range(size,pos,stride))
     else:
         raise ValueError("Stride can not be 0")
