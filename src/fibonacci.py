@@ -50,5 +50,12 @@ def fibonacci_sequence(size, pos=0, stride=1):
     assert type(pos) == int and pos >= 0, "Position must be a positive integer"
     assert type(stride) == int, "Stride must be integer"
 
-    size *= stride
-    return (fibonacci_pos(x) for x in range(pos, size, stride))
+    size += pos
+    size *= abs(stride)
+
+    if stride > 0:
+        return (fibonacci_pos(x) for x in range(pos, size, stride))
+    else if stride < 0:
+        return (fibonacci_pos(x) for x in range(size,pos,stride))
+    else:
+        raise ValueError("Stride can not be 0")
