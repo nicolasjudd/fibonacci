@@ -1,5 +1,0 @@
-# Command to run scripts
-language: python
-python:
-        - "3.8"
-script: pytest tests/
