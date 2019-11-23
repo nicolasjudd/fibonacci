@@ -2,7 +2,7 @@ import unittest
 import random
 from fibonacci import fibonacci_pos
 
-LOAD_RUNS = 2_000
+LOAD_RUNS = 2000
 
 class test_FibonacciPosFunctionStarts(unittest.TestCase):
     def test_fibonacci_posFunctionExists(self):
