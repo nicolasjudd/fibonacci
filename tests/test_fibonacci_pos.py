@@ -14,7 +14,8 @@ class test_FibonacciPosFunctionStarts(unittest.TestCase):
 
     def test_fibonacci_posDoesntRunWithTooManyRightTypeArguments(self):
         for pos in range(2, 12):
-            with self.subTest(pos=pos) and self.assertRaises(TypeError):
+#            with self.subTest(pos=pos) and
+            with self.assertRaises(TypeError):
                 fibonacci_pos(*[x for x in range(pos)])
 
     def test_fibonacci_posDoesntRunWithNegativeArgument(self):
@@ -37,32 +38,32 @@ class test_FibonacciPosFunctionStarts(unittest.TestCase):
 class test_FibonacciPosFunctionRuns(unittest.TestCase):
     def test_fibonacciReturnsCorrectValuesinSequence(self):
         for i, val in enumerate([0,1,1,2,3,5,8,13,21,34,55,89,144,233,377]):
-            with self.subTest(pos=i):
-                self.assertEqual(fibonacci_pos(i),val)
+#            with self.subTest(pos=i):
+            self.assertEqual(fibonacci_pos(i),val)
 
     def test_fibonacciPosReturnsCorrectValuesOutOfSequence(self):
         for pos, val in [(10,55),(2,1),(12,144),(14,377),(0,0)]:
-            with self.subTest(pos=pos, val=val):
-                self.assertEqual(fibonacci_pos(pos),val)
+#            with self.subTest(pos=pos, val=val):
+            self.assertEqual(fibonacci_pos(pos),val)
 
     def test_fibonacciPosReturnsUnderLoad(self):
         for pos in range(LOAD_RUNS):
-            with self.subTest(pos=pos):
-                try:
-                    fibonacci_pos(pos)
-                except:
-                    self.assertTrue(False)
-                    return
+#            with self.subTest(pos=pos):
+            try:
+                fibonacci_pos(pos)
+            except:
+                self.assertTrue(False)
+                return
         self.assertTrue(True)
 
     def test_fibonacciPosReturnsUnderLoadBackward(self):
         for pos in range(LOAD_RUNS,0,-1):
-            with self.subTest(pos=pos):
-                try:
-                    fibonacci_pos(pos)
-                except:
-                    self.assertTrue(False)
-                    return
+#            with self.subTest(pos=pos):
+            try:
+                fibonacci_pos(pos)
+            except:
+                self.assertTrue(False)
+                return
         self.assertTrue(True)
 
     def test_fibonacciPosReturnsUnderRandomOrderLoad(self):

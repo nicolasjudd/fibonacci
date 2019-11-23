@@ -1,3 +1,5 @@
 fibonacci-venv*/
 __pycache__/
 .coverage
+.tox
+fibonacci.egg-info

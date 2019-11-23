@@ -20,27 +20,27 @@ class test_FibonnaciSequenceFunctionStarts(unittest.TestCase):
     def test_fibonnaciSequenceFunctionReturnsRightSizeWithOnlySizeArg(self):
         for size in range(100):
             fseq_size = 0
-            with self.subTest(size=size):
-                for _ in fibonacci_sequence(size):
-                    fseq_size += 1
-                self.assertEqual(size, fseq_size)
+#            with self.subTest(size=size):
+            for _ in fibonacci_sequence(size):
+                fseq_size += 1
+            self.assertEqual(size, fseq_size)
 
     def test_fibonnaciSequenceFunctionReturnsRightSizeWithSizeandPos(self):
         for size in range(100):
             for pos in range(10):
                 fseq_size = 0
-                with self.subTest(size=size, pos=pos):
-                    for _ in fibonacci_sequence(size,pos):
-                        fseq_size += 1
-                    self.assertEqual(size, fseq_size)
+#                with self.subTest(size=size, pos=pos):
+                for _ in fibonacci_sequence(size,pos):
+                    fseq_size += 1
+                self.assertEqual(size, fseq_size)
                 
     def test_fibonnaciSequenceFunctionReturnsRightSizeWithSizePosStride(self):
         for size in range(100):
             for pos in range(10):
                 for stride in range(-10,10):
                     fseq_size = 0
-                    with self.subTest(size=size, pos=pos,stride=stride):
-                        for _ in fibonacci_sequence(size,pos):
-                            fseq_size += 1
-                        self.assertEqual(size, fseq_size)
+#                    with self.subTest(size=size, pos=pos,stride=stride):
+                    for _ in fibonacci_sequence(size,pos):
+                        fseq_size += 1
+                    self.assertEqual(size, fseq_size)
                 
