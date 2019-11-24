@@ -55,3 +55,16 @@ class test_FibonnaciSequenceFunctionStarts(unittest.TestCase):
                         fseq_size += 1
                     self.assertEqual(size, fseq_size)
                 
+    def test_fibonacciSequenceReturnsSameNumbersForwardsAsBackwards(self):
+        for size in range(100):
+            for pos in range(10):
+                for stride in range(1,11):
+#                    with self.subTest(size=size, pos=pos, stride=stride):
+                    f = list(fibonacci_sequence(size,pos,stride))
+                    b = list(fibonacci_sequence(size,pos,-1*stride))
+                    b.reverse()
+                    self.assertEqual(f, b)
+    
+    def test_fibonacciSequenceReturnsRightNumberswithStride(self):
+        seq = list(fibonacci_sequence(10,1,3))
+        self.assertEqual(seq,[1,3,13,55,233,987,4181,17711,75025,317811])
