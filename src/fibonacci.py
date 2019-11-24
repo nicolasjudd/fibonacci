@@ -43,8 +43,8 @@ def fibonacci_nearest(num, kind="nearest"):
           greater than or equal to num
         * "nearest" -- Produces the nearest fibonacci number.
           Produces the higher number if num is equidistant from both. Default
-        
-    
+
+
     Return
     ------
     int :
