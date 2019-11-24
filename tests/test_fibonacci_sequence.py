@@ -34,13 +34,24 @@ class test_FibonnaciSequenceFunctionStarts(unittest.TestCase):
                     fseq_size += 1
                 self.assertEqual(size, fseq_size)
                 
+    def test_fibonnaciSequenceFunctionReturnsRightSizeWithSizeandStride(self):
+        for size in range(100):
+            for stride in range(-10,10):
+                if stride == 0: continue
+                fseq_size = 0
+#                with self.subTest(size=size, stride=stride):
+                for _ in fibonacci_sequence(size,stride=stride):
+                    fseq_size += 1
+                self.assertEqual(size, fseq_size)
+
     def test_fibonnaciSequenceFunctionReturnsRightSizeWithSizePosStride(self):
         for size in range(100):
             for pos in range(10):
                 for stride in range(-10,10):
+                    if stride == 0: continue
                     fseq_size = 0
 #                    with self.subTest(size=size, pos=pos,stride=stride):
-                    for _ in fibonacci_sequence(size,pos):
+                    for _ in fibonacci_sequence(size,pos,stride):
                         fseq_size += 1
                     self.assertEqual(size, fseq_size)
                 
