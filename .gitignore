@@ -3,3 +3,5 @@ __pycache__/
 .coverage
 .tox
 fibonacci.egg-info
+docs/build/html/
+docs/build/doctrees/

@@ -1,12 +1,12 @@
 def fibonacci_pos(pos):
     """
-    Calculate the Fibonacci number located as position pos,
-    considering 0 is at position 0 of the Fibonacci sequence
+    Calculate the Fibonacci number located as position pos.
+    Considering ``0`` is at position ``0`` of the Fibonacci sequence
 
     Parameters
     ----------
     pos : int
-        Position of the value of the Fibonacci sequnce to start with. E.g.,
+        Position of the value of the Fibonacci sequnce to start with.
 
     Returns
     -------
@@ -36,7 +36,8 @@ def fibonacci_sequence(size, pos=0, stride=1):
 
     pos : positive int, optional
         Position of the Fibonnaci sequence that the segment should begin with.
-        The 0th position of the Fibonacci sequence is 0 here.
+
+        The ``0`` th position of the Fibonacci sequence is ``0`` here.
 
     stride : int, optional
         Number of positions to move while traversing sequence
