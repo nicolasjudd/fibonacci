@@ -36,20 +36,22 @@ def fibonacci_nearest(num, kind="nearest"):
     kind : str, optional
         Determination of which fibonacci number to return if num is between two
         fibonacci numbers.
-            * "lower" -- Produces the nearest fibonacci number less than 
-                    or equal to num
-            * "upper" -- Produces the nearest fibonacci number greater than 
-                    or equal to num
-            * "nearest" -- Produces the nearest fibonacci number. Produces the 
-                    higher number if num is equidistant from both. Default
 
+        * "lower" -- Produces the nearest fibonacci number
+          less than or equal to num
+        * "upper" -- Produces the nearest fibonacci number
+          greater than or equal to num
+        * "nearest" -- Produces the nearest fibonacci number.
+          Produces the higher number if num is equidistant from both. Default
+        
+    
     Return
     ------
     int :
         Fibonacci number near num
     """
-    assert (type(num) == float) or (type(num) == int), "num must be a real number"
-    assert kind in ('lower','upper','nearest'), "kind must be lower, upper, or nearest"
+    assert (type(num) == float) or (type(num) == int), "num must be a real"
+    assert kind in ('lower', 'upper', 'nearest'), "kind must be a valid option"
 
     pos = 0
     fib_lower = 0
@@ -65,7 +67,7 @@ def fibonacci_nearest(num, kind="nearest"):
         result = fib_upper
     elif kind == 'nearest':
         measure = abs(fib_upper - num) <= abs(fib_lower - num)
-        result = fib_upper if measure else fib_lower 
+        result = fib_upper if measure else fib_lower
 
     return result
 
@@ -104,7 +106,7 @@ def fibonacci_sequence(size, pos=0, stride=1):
         return (fibonacci_pos(x) for x in range(pos, size, stride))
     elif stride < 0:
         size += stride
-        pos  += stride
+        pos += stride
         return (fibonacci_pos(x) for x in range(size, pos, stride))
     else:
         raise ValueError("Stride can not be 0")
