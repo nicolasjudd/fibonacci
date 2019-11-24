@@ -1,7 +1,7 @@
 def fibonacci_pos(pos):
     """
     Calculate the Fibonacci number located as position pos.
-    Considering ``0`` is at position ``0`` of the Fibonacci sequence
+    Considering 0 is at position 0 of the Fibonacci sequence
 
     Parameters
     ----------
@@ -24,6 +24,52 @@ def fibonacci_pos(pos):
     return b
 
 
+def fibonacci_nearest(num, kind="nearest"):
+    """
+    Produces the fibonacci number near the entered number.
+
+    Parameters
+    ----------
+    num : real number
+        Number near the fibonacci number to be found
+
+    kind : str, optional
+        Determination of which fibonacci number to return if num is between two
+        fibonacci numbers.
+            * "lower" -- Produces the nearest fibonacci number less than 
+                    or equal to num
+            * "upper" -- Produces the nearest fibonacci number greater than 
+                    or equal to num
+            * "nearest" -- Produces the nearest fibonacci number. Produces the 
+                    higher number if num is equidistant from both. Default
+
+    Return
+    ------
+    int :
+        Fibonacci number near num
+    """
+    assert (type(num) == float) or (type(num) == int), "num must be a real number"
+    assert kind in ('lower','upper','nearest'), "kind must be lower, upper, or nearest"
+
+    pos = 0
+    fib_lower = 0
+    fib_upper = fibonacci_pos(pos)
+    while (fib_upper < num):
+        pos += 1
+        fib_lower = fib_upper
+        fib_upper = fibonacci_pos(pos)
+
+    if kind == 'lower':
+        result = fib_lower if fib_upper != num else fib_upper
+    elif kind == 'upper':
+        result = fib_upper
+    elif kind == 'nearest':
+        measure = abs(fib_upper - num) <= abs(fib_lower - num)
+        result = fib_upper if measure else fib_lower 
+
+    return result
+
+
 def fibonacci_sequence(size, pos=0, stride=1):
     """
     Produce a generator of the Fibonacci sequence containing a number of
@@ -37,7 +83,7 @@ def fibonacci_sequence(size, pos=0, stride=1):
     pos : positive int, optional
         Position of the Fibonnaci sequence that the segment should begin with.
 
-        The ``0`` th position of the Fibonacci sequence is ``0`` here.
+        The 0 th position of the Fibonacci sequence is 0 here.
 
     stride : int, optional
         Number of positions to move while traversing sequence
